@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import kotlin.math.sqrt
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,78 +16,64 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val Enter=findViewById<TextView>(R.id.Enter)
+        val enter = findViewById<TextView>(R.id.enter)
         val num1 = findViewById<EditText>(R.id.num1)
-        val num2= findViewById<EditText>(R.id.num2)
-        val ADDITION=findViewById<Button>(R.id.ADDITION)
-        val SUBTRACTION=findViewById<Button>(R.id.SUBTRACTION)
-        val MULTIPLICATION=findViewById<Button>(R.id.MULTIPLICATION)
-        val DIVISION=findViewById<Button>(R.id.DIVISION)
-        val SQURE_ROOT=findViewById<Button>(R.id.SQURE_ROOT)
-        val POWER=findViewById<Button>(R.id.POWER)
-        val statsfuction=findViewById<Button>(R.id.statsfuction)
-        val Answer = findViewById<TextView>(R.id.Answer)
+        val num2 = findViewById<EditText>(R.id.num2)
+        val addition = findViewById<Button>(R.id.addition)
+        val subtraction = findViewById<Button>(R.id.subtraction)
+        val multiplication = findViewById<Button>(R.id.multiplication)
+        val division = findViewById<Button>(R.id.division)
+        val squareRoot = findViewById<Button>(R.id.square_root)
+        val power = findViewById<Button>(R.id.power)
+        val statsFunction = findViewById<Button>(R.id.statsFunction)
+        val answer = findViewById<TextView>(R.id.answer)
 
-            ADDITION.setOnClickListener{
-                var num1=findViewById<EditText>(R.id.num1)
-                var num2=findViewById<EditText>(R.id.num2)
-                var txtnum1=num1.text.toString().toInt()
-                var txtnum2=num2.text.toString().toInt()
+        addition.setOnClickListener {
+            val txtnum1 = num1.text.toString().toInt()
+            val txtnum2 = num2.text.toString().toInt()
+            print("numbers $txtnum1, $txtnum2");
 
-                var sum =txtnum1.toInt() + txtnum2.toInt()
-                var Answer = findViewById<TextView>(R.id.Answer)
-                display.setText(sum + Answer.toString())
-            }//end of addition0
+            val sum = txtnum1 + txtnum2
+            answer.text = sum.toString()
+        }//end of addition0
 
-        SUBTRACTION.setOnClickListener{
-            var num1=findViewById<EditText>(R.id.num1)
-            var num2=findViewById<EditText>(R.id.num2)
-            var txtnum1=num1.text.toString()
-            var txtnum2=num2.text.toString()
+        subtraction.setOnClickListener {
+            val txtnum1 = num1.text.toString()
+            val txtnum2 = num2.text.toString()
 
-            var sum =txtnum1.toInt() - txtnum2.toInt()
-            var Answer = findViewById<TextView>(R.id.Answer)
+            val sub = txtnum1.toInt() - txtnum2.toInt()
+            answer.text = sub.toString()
         }//end of subtraction
 
-        MULTIPLICATION.setOnClickListener{
-            var num1=findViewById<EditText>(R.id.num1)
-            var num2=findViewById<EditText>(R.id.num2)
-            var txtnum1=num1.text.toString()
-            var txtnum2=num2.text.toString()
+        multiplication.setOnClickListener {
+            val txtnum1 = num1.text.toString()
+            val txtnum2 = num2.text.toString()
 
-            var sum =txtnum1.toInt() * txtnum2.toInt()
-            var Answer = findViewById<TextView>(R.id.Answer)
+            val mult = txtnum1.toInt() * txtnum2.toInt()
+            answer.text = mult.toString()
         }//end of MULTIPLICATION
 
-        DIVISION.setOnClickListener{
-            var num1=findViewById<EditText>(R.id.num1)
-            var num2=findViewById<EditText>(R.id.num2)
-            var txtnum1=num1.text.toString()
-            var txtnum2=num2.text.toString()
+        division.setOnClickListener {
+            val txtnum1 = num1.text.toString()
+            val txtnum2 = num2.text.toString()
 
-            var sum =txtnum1.toInt() / txtnum2.toInt()
-            var Answer = findViewById<TextView>(R.id.Answer)
+            val div = txtnum1.toInt() / txtnum2.toInt()
+            answer.text = div.toString()
         }//end of DIVISION
 
-        SQURE_ROOT.setOnClickListener{
-            var num1=findViewById<EditText>(R.id.num1)
-            var num2=findViewById<EditText>(R.id.num2)
-            var txtnum1=num1.text.toString()
-            var txtnum2=num2.text.toString()
+        squareRoot.setOnClickListener {
+            val txtnum1 = num1.text.toString()
 
-            //var sum = sqrt(txtnum1.toInt() + txtnum2.toInt() )
-            var Answer = findViewById<TextView>(R.id.Answer)
+            val sqrt = kotlin.math.sqrt(txtnum1.toDouble())
+            answer.text = sqrt.toString()
         }//end of SQURE_ROOT
 
-        POWER.setOnClickListener{
-            var num1=findViewById<EditText>(R.id.num1)
-            var num2=findViewById<EditText>(R.id.num2)
-            var txtnum1=num1.text.toString()
-            var txtnum2=num2.text.toString()
+        power.setOnClickListener {
+            val txtnum1 = num1.text.toString()
+            val txtnum2 = num2.text.toString()
 
-            var sum =txtnum1.toInt() / txtnum2.toInt()
-            var Answer = findViewById<TextView>(R.id.Answer)
+            val pow = txtnum1.toDouble().pow(txtnum2.toDouble())
+            answer.text = pow.toString()
         }//end of POWER
-
     }//end of Super
 }//End of class

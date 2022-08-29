@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/Enter"
+        android:id="@+id/enter"
         android:layout_width="127dp"
         android:layout_height="50dp"
         android:layout_marginStart="31dp"
@@ -18,70 +18,70 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/ADDITION"
+        android:id="@+id/addition"
         android:layout_width="185dp"
         android:layout_height="48dp"
         android:layout_marginStart="113dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="113dp"
         android:text="ADDITION"
-        app:layout_constraintBottom_toTopOf="@+id/SUBTRACTION"
+        app:layout_constraintBottom_toTopOf="@+id/subtraction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Enter"
+        app:layout_constraintTop_toBottomOf="@+id/enter"
         app:layout_constraintVertical_bias="0.984" />
 
     <Button
-        android:id="@+id/SUBTRACTION"
+        android:id="@+id/subtraction"
         android:layout_width="185dp"
         android:layout_height="48dp"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="113dp"
         android:text="SUBTRACTION"
-        app:layout_constraintBottom_toTopOf="@+id/MULTIPLICATION"
+        app:layout_constraintBottom_toTopOf="@+id/multiplication"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/SQURE_ROOT"
+        android:id="@+id/square_root"
         android:layout_width="185dp"
         android:layout_height="48dp"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="113dp"
         android:text="SQURE ROOT"
-        app:layout_constraintBottom_toTopOf="@+id/POWER"
+        app:layout_constraintBottom_toTopOf="@+id/power"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/MULTIPLICATION"
+        android:id="@+id/multiplication"
         android:layout_width="185dp"
         android:layout_height="48dp"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="113dp"
         android:text="MULTIPLICATION"
-        app:layout_constraintBottom_toTopOf="@+id/DIVISION"
+        app:layout_constraintBottom_toTopOf="@+id/division"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/DIVISION"
+        android:id="@+id/division"
         android:layout_width="185dp"
         android:layout_height="0dp"
         android:layout_marginStart="113dp"
         android:layout_marginEnd="113dp"
         android:text="DIVISION"
-        app:layout_constraintBottom_toTopOf="@+id/SQURE_ROOT"
+        app:layout_constraintBottom_toTopOf="@+id/square_root"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/POWER"
+        android:id="@+id/power"
         android:layout_width="185dp"
         android:layout_height="48dp"
         android:layout_marginStart="113dp"
@@ -94,19 +94,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/Answer"
+        android:id="@+id/answer"
         android:layout_width="186dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="209dp"
         android:layout_marginBottom="76dp"
         android:text="Answer"
-        app:layout_constraintBottom_toTopOf="@+id/statsfuction"
+        app:layout_constraintBottom_toTopOf="@+id/statsFunction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/statsfuction"
+        android:id="@+id/statsFunction"
         android:layout_width="257dp"
         android:layout_height="48dp"
         android:layout_marginStart="90dp"
@@ -126,7 +126,7 @@
         android:ems="10"
         android:hint="1 - 9"
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/Enter"
+        app:layout_constraintStart_toEndOf="@+id/enter"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
