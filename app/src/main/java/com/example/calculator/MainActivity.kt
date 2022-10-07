@@ -1,5 +1,6 @@
 package com.example.calculator
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,16 +9,15 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import java.lang.NumberFormatException
-import kotlin.math.pow
+import kotlin.math.sqrt
 
+@SuppressLint("SetTextI18n")
 class MainActivity : AppCompatActivity() {
-
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val enter = findViewById<TextView>(R.id.enter)
         val num1 = findViewById<EditText>(R.id.num1)
         val num2 = findViewById<EditText>(R.id.num2)
         val addition = findViewById<Button>(R.id.addition)
@@ -26,18 +26,15 @@ class MainActivity : AppCompatActivity() {
         val division = findViewById<Button>(R.id.division)
         val squareRoot = findViewById<Button>(R.id.square_root)
         val power = findViewById<Button>(R.id.power)
-//        val statsFunction = findViewById<Button>(R.id.statsFunction)
         val answer = findViewById<TextView>(R.id.answer)
 
         addition.setOnClickListener {
             try {
-                val txtnum1 = num1.text.toString().toInt()
-                val txtnum2 = num2.text.toString().toInt()
+                val a = num1.text.toString().toInt()
+                val b = num2.text.toString().toInt()
 
-                print("numbers $txtnum1, $txtnum2")
-
-                val sum = txtnum1 + txtnum2
-                answer.text = sum.toString()
+                val sum = a + b
+                answer.text = "$a + $b = $sum";
             } catch (e: NumberFormatException) {
                 return@setOnClickListener
             }
@@ -45,11 +42,11 @@ class MainActivity : AppCompatActivity() {
 
         subtraction.setOnClickListener {
             try {
-                val txtnum1 = num1.text.toString()
-                val txtnum2 = num2.text.toString()
+                val a = num1.text.toString()
+                val b = num2.text.toString()
 
-                val sub = txtnum1.toInt() - txtnum2.toInt()
-                answer.text = sub.toString()
+                val sub = a.toInt() - b.toInt()
+                answer.text = "$a - $b = $sub";
             } catch (e: NumberFormatException) {
                 return@setOnClickListener
             }
@@ -57,11 +54,11 @@ class MainActivity : AppCompatActivity() {
 
         multiplication.setOnClickListener {
             try {
-                val txtnum1 = num1.text.toString()
-                val txtnum2 = num2.text.toString()
+                val a = num1.text.toString()
+                val b = num2.text.toString()
 
-                val mult = txtnum1.toInt() * txtnum2.toInt()
-                answer.text = mult.toString()
+                val mult = a.toInt() * b.toInt()
+                answer.text = "$a * $b = $mult";
             } catch (e: NumberFormatException) {
                 return@setOnClickListener
             }
@@ -69,12 +66,10 @@ class MainActivity : AppCompatActivity() {
 
         division.setOnClickListener {
             try {
-
-                val txtnum1 = num1.text.toString()
-                val txtnum2 = num2.text.toString()
-
-                val div = txtnum1.toInt() / txtnum2.toInt()
-                answer.text = div.toString()
+                val a = num1.text.toString().toInt()
+                val b = num2.text.toString().toInt()
+                val res = div(a, b);
+                answer.text = "$a / $b = $res"
             } catch (e: NumberFormatException) {
                 return@setOnClickListener
             }
@@ -82,10 +77,9 @@ class MainActivity : AppCompatActivity() {
 
         squareRoot.setOnClickListener {
             try {
-                val txtnum1 = num1.text.toString()
-
-                val sqrt = kotlin.math.sqrt(txtnum1.toDouble())
-                answer.text = sqrt.toString()
+                val a = num1.text.toString().toInt()
+                val sqrt = sqrt(a)
+                answer.text = "√$a = $sqrt"
             } catch (e: NumberFormatException) {
                 return@setOnClickListener
             }
@@ -93,14 +87,40 @@ class MainActivity : AppCompatActivity() {
 
         power.setOnClickListener {
             try {
-                val txtnum1 = num1.text.toString()
-                val txtnum2 = num2.text.toString()
+                val a = num1.text.toString().toInt()
+                val n = num2.text.toString().toInt()
 
-                val pow = txtnum1.toDouble().pow(txtnum2.toDouble())
-                answer.text = pow.toString()
+                val pow = power(a, n)
+                answer.text = "$a^$n = $pow"
             } catch (e: NumberFormatException) {
                 return@setOnClickListener
             }
         }//end of POWER
     }//end of Super
+
+    private fun sqrt(a: Int): Double {
+        if (a <= 0){
+            throw Exception("The number shouldn't be 0.");
+        }
+        return sqrt(a.toDouble());
+    }
+
+    private fun div(a: Int, b: Int): Double {
+        if (b == 0){
+            throw Exception("The number shouldn't be 0.");
+        }
+        return a.toDouble()/b.toDouble();
+    }
+
+    private fun power(a: Int, n: Int): Int{
+        var partialPow = 1
+        for (i in 1..n){
+            partialPow *= a;
+        }
+        return partialPow;
+    }
+
+    private fun open_popup(){
+
+    }
 }//End of class
