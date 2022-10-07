@@ -1,14 +1,15 @@
 package com.example.calculator
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import java.lang.NumberFormatException
+import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.sqrt
 
 @SuppressLint("SetTextI18n")
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 val sum = a + b
                 answer.text = "$a + $b = $sum";
             } catch (e: NumberFormatException) {
+                openPopup(it.context, e)
                 return@setOnClickListener
             }
         }//end of addition0
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 val sub = a.toInt() - b.toInt()
                 answer.text = "$a - $b = $sub";
             } catch (e: NumberFormatException) {
+                openPopup(it.context, e)
                 return@setOnClickListener
             }
         }//end of subtraction
@@ -60,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                 val mult = a.toInt() * b.toInt()
                 answer.text = "$a * $b = $mult";
             } catch (e: NumberFormatException) {
+                openPopup(it.context, e)
                 return@setOnClickListener
             }
         }//end of MULTIPLICATION
@@ -70,7 +74,8 @@ class MainActivity : AppCompatActivity() {
                 val b = num2.text.toString().toInt()
                 val res = div(a, b);
                 answer.text = "$a / $b = $res"
-            } catch (e: NumberFormatException) {
+            } catch (e: Exception) {
+                openPopup(it.context, e)
                 return@setOnClickListener
             }
         }//end of DIVISION
@@ -80,10 +85,11 @@ class MainActivity : AppCompatActivity() {
                 val a = num1.text.toString().toInt()
                 val sqrt = sqrt(a)
                 answer.text = "√$a = $sqrt"
-            } catch (e: NumberFormatException) {
+            } catch (e: Exception) {
+                openPopup(it.context, e)
                 return@setOnClickListener
             }
-        }//end of SQURE_ROOT
+        }//end of SQUARE_ROOT
 
         power.setOnClickListener {
             try {
@@ -92,35 +98,44 @@ class MainActivity : AppCompatActivity() {
 
                 val pow = power(a, n)
                 answer.text = "$a^$n = $pow"
-            } catch (e: NumberFormatException) {
+            } catch (e: Exception) {
+                openPopup(it.context, e)
                 return@setOnClickListener
             }
         }//end of POWER
     }//end of Super
 
     private fun sqrt(a: Int): Double {
-        if (a <= 0){
-            throw Exception("The number shouldn't be 0.");
+        if (a <= 0) {
+            throw Exception("The number shouldn't be less or equal to 0.");
         }
         return sqrt(a.toDouble());
     }
 
     private fun div(a: Int, b: Int): Double {
-        if (b == 0){
+        if (b == 0) {
             throw Exception("The number shouldn't be 0.");
         }
-        return a.toDouble()/b.toDouble();
+        return a.toDouble() / b.toDouble();
     }
 
-    private fun power(a: Int, n: Int): Int{
+    private fun power(a: Int, n: Int): Int {
+        if (n < 0) {
+            throw Exception("The number shouldn't be less than 0.");
+        }
         var partialPow = 1
-        for (i in 1..n){
+        for (i in 1..n) {
             partialPow *= a;
         }
         return partialPow;
     }
 
-    private fun open_popup(){
-
+    private fun openPopup(ctx: Context, e: Exception) {
+        val dialog = AlertDialog.Builder(ctx)
+            .setTitle("An error occured.")
+            .setMessage(e.message)
+            .setNeutralButton("Dismiss") { popup, _ -> run { popup.dismiss() } }
+            .create()
+        dialog.show()
     }
 }//End of class
